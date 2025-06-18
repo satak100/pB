@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredBench - Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-items">
+            <a href="home.html" class="nav-item">Home</a>
+            <a href="leaderboard.html" class="nav-item">Leaderboard</a>
+            <a href="ds_compete.html" class="nav-item">DS Compete</a>
+            <a href="tasks.html" class="nav-item">Tasks</a>
+            <div id="player-section" class="nav-item">
+                <a href="login.html" class="nav-item become-player">Become a Player</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <div class="task-selector">
+            <label for="taskSelect">Select a task:</label>
+            <select id="taskSelect" onchange="loadLeaderboard(this.value)">
+                <option value="">Select a task</option>
+            </select>
+        </div>
+        <div class="task-list"></div>
+        <div id="taskDescription" class="hidden">
+            <h2>Task Description</h2>
+            <p id="taskDescriptionText"></p>
+            <button class="system-btn" onclick="showSubmission()">Upload Submission</button>
+        </div>
+        <div id="leaderboardContainer"></div>
+    </div>
+
+    <div id="popup" class="message-box hidden">
+        <h2>Choose an option:</h2>
+        <div class="options">
+            <button class="system-btn" onclick="window.location.href='tasks.html'">Download Prediction Tasks</button>
+            <button class="system-btn" onclick="showSubmission()">Prediction Submission</button>
+        </div>
+    </div>
+
+    <div id="submissionPopup" class="message-box hidden">
+        <h2>Which submission are you uploading?</h2>
+        <div class="options">
+            <button class="system-btn" onclick="uploadFile('Human')">Human</button>
+            <button class="system-btn" onclick="uploadFile('Agent')">Agent</button>
+        </div>
+    </div>
+
+    <div id="uploadPopup" class="message-box hidden">
+        <h2>Upload your JSON file:</h2>
+        <input id="fileInput" type="file" accept=".json">
+        <button class="system-btn" onclick="submitFile()">Submit</button>
+    </div>
+
+    <div id="thanksPopup" class="message-box hidden">
+        <h2>Thanks for accepting the challenge!</h2>
+    </div>
+
+    <div id="createTaskPopup" class="message-box hidden">
+        <h2>Create a New Prediction Task</h2>
+        <div class="login-form">
+            <label for="taskIdInput">Task ID:</label>
+            <input id="taskIdInput" type="text" placeholder="Task ID">
+            <label for="taskNameInput">Task Name:</label>
+            <input id="taskNameInput" type="text" placeholder="Task Name">
+            <label for="taskDescriptionInput">Task Description:</label>
+            <textarea id="taskDescriptionInput" placeholder="Task Description" rows="5"></textarea>
+            <button class="system-btn" onclick="submitTask()">Submit Task</button>
+            <button class="system-btn" onclick="closeCreateTaskPopup()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="evalPopup" class="message-box hidden">
+        <h2>Evaluating JSON structure</h2>
+        <div class="loading-bar"><div class="progress" id="jsonProgress"></div></div>
+        <h2>Evaluating Guidelines</h2>
+        <div class="loading-bar"><div class="progress" id="guidelinesProgress"></div></div>
+    </div>
+
+    <div id="successPopup" class="message-box hidden">
+        <h2>Success</h2>
+        <p>Task submitted successfully! The system architect will review it.</p>
+    </div>
+
+    <div id="errorPopup" class="message-box hidden">
+        <h2>Error</h2>
+        <p>Error submitting task. Please try again.</p>
+    </div>
+
+    <div id="accessDeniedPopup" class="message-box hidden">
+        <h2>Error</h2>
+        <p>Only architects can create tasks.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+    {
+        "task_str": "predict the total number of top stories in abc.net.au the next 24 hours [00:00 GMT - 23:59 GMT], and what would be the percentage of politics topic?",
+        "output_type": "dict",
+        "output_fields": ["total_stories", "politics_percentage"]
+    },
+    {
+        "task_str": "From the total number of top stories in abc.net.au the next 24 hours [00:00 GMT - 23:59 GMT], provide the distribution of news topics",
+        "output_type": "dict",
+        "output_fields": ["topic_distribution"]
+    }
+]

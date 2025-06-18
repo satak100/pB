@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredBench - Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to PredBench</h1>
+        <p>Do you want to become a player?</p>
+        <div class="options">
+            <button id="yesBtn" class="system-btn" onclick="redirectToLogin()">Yes</button>
+            <button id="noBtn" class="system-btn" onclick="showArchitectPrompt()">No</button>
+        </div>
+        <div id="architectPrompt" class="message-box hidden">
+            <p>Are you system architect?</p>
+            <div class="options">
+                <button class="system-btn" onclick="redirectToLogin()">Yes</button>
+                <button class="system-btn" onclick="showMessage()">No</button>
+            </div>
+        </div>
+        <div id="messageBox" class="message-box hidden">
+            <p>Take a tour around the system and start playing! The system is always looking for challenging players like you.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

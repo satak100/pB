@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredBench - Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-items">
+            <a href="home.html" class="nav-item">Home</a>
+            <a href="leaderboard.html" class="nav-item">Leaderboard</a>
+            <a href="ds_compete.html" class="nav-item">DS Compete</a>
+            <a href="tasks.html" class="nav-item">Tasks</a>
+            <div id="player-section" class="nav-item become-player">
+                <a href="login.html" class="nav-item">Become a Player</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-task">
+        <a href="./data/prediction_tasks.json" download="prediction_tasks.json">
+            <button class="system-btn">Download Prediction Tasks</button>
+        </a>
+        <div id="taskCreationSection" class="hidden">
+            <h1>Create a New Prediction Task</h1>
+            <div class="guidelines">
+                <h2>Desired Data Guidelines</h2>
+                <ul>
+                    <li>The task should have a well-defined context.</li>
+                    <li>The task should have practical usefulness.</li>
+                    <li>The task should have verifiable ground truth source in the future timeframe.</li>
+                    <li>The ground truth of the task should be dynamic (frequently updated).</li>
+                </ul>
+                <h3>Example:</h3>
+                <dl class="example">
+                    <dt>Context:</dt>
+                    <dd>Nova Scotia has faced persistent power reliability challenges, with over 4,700 outages recorded in 2024 alone, driven largely by severe weather events like high winds and ice storms.</dd>
+                    <dt>Domain & Practical Need:</dt>
+                    <dd>Given the critical need for proactive infrastructure management.</dd>
+                    <dt>Task:</dt>
+                    <dd>Predict the weekly count and average duration (in hours) of weather-related power outages across Nova Scotia’s 18 counties during the evaluation window.</dd>
+                    <dt>Evaluation Window:</dt>
+                    <dd>Second quarter of 2025 (April 1 - June 31).</dd>
+                    <dt>Ground Truth Source:</dt>
+                    <dd>Predictions should rely on publicly available authoritative sources and account for seasonal trends, geographic variability, and historical outage patterns.</dd>
+                </dl>
+            </div>
+            <input type="text" id="taskIdInput" placeholder="Enter Task ID (e.g., T001)" required>
+            <input type="text" id="taskNameInput" placeholder="Enter Task Name" required>
+            <textarea id="taskDescriptionInput" placeholder="Enter task description..." rows="12" cols="80"></textarea>
+            <br>
+            <button class="system-btn" onclick="submitTask()">Submit Task</button>
+        </div>
+    </div>
+    <div id="evalPopup" class="message-box hidden">
+        <p>Evaluating JSON structure</p>
+        <div class="loading-bar"><div class="progress" id="jsonProgress"></div></div>
+        <p>Evaluating Guidelines</p>
+        <div class="loading-bar"><div class="progress" id="guidelinesProgress"></div></div>
+    </div>
+    <div id="successPopup" class="message-box hidden">
+        <p>Task submitted successfully! The system architect will review it.</p>
+    </div>
+    <div id="errorPopup" class="message-box hidden">
+        <p>Error submitting task. Please try again.</p>
+    </div>
+    <div id="accessDeniedPopup" class="message-box hidden">
+        <p>Only architects can create tasks.</p>
+    </div>
+    <div id="popup" class="message-box hidden">
+        <p>Choose an option:</p>
+        <a href="./data/prediction_tasks.json" download="prediction_tasks.json">
+            <button class="system-btn">Download Prediction Tasks</button>
+        </a>
+        <button class="system-btn" onclick="showSubmission()">Prediction Submission</button>
+    </div>
+    <div id="submissionPopup" class="message-box hidden">
+        <p>Which submission are you uploading?</p>
+        <button class="system-btn" onclick="uploadFile('human')">Human</button>
+        <button class="system-btn" onclick="uploadFile('agent')">Agent</button>
+    </div>
+    <div id="uploadPopup" class="message-box hidden">
+        <p>Upload your JSON file:</p>
+        <input type="file" id="fileInput" accept=".json">
+        <button class="system-btn" onclick="submitFile()">Submit</button>
+    </div>
+    <div id="thanksPopup" class="message-box hidden">
+        <p>Thanks for accepting the challenge!</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
