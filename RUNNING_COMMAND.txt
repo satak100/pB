@@ -1,5 +1,0 @@
-Running the backend:
-
-
-Running the frontend:
-
