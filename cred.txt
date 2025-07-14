@@ -1,2 +1,0 @@
-username: architect1
-password: architectpass
